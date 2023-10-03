@@ -1,0 +1,25 @@
+package com.apirestparking.apirest.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.apirestparking.apirest.models.ParkingSpace;
+import com.apirestparking.apirest.services.ParkingSpaceService;
+
+@Controller
+public class ParkingSpaceViewController {
+    @Autowired
+    ParkingSpaceService parkingSpaceService;
+
+        @GetMapping("/spaces")
+        public String showParkingSpaces(Model model) {
+            List<ParkingSpace> spaces = parkingSpaceService.getAllParkingSpaces();
+            model.addAttribute("parkingSpaces", spaces);
+        return "spaces";
+    }
+    
+}

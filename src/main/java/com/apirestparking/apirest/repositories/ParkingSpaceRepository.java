@@ -11,4 +11,7 @@ public interface ParkingSpaceRepository extends CrudRepository<ParkingSpace, Lon
 
     @Query(value = "SELECT id FROM parking_space ORDER BY RANDOM() LIMIT 5", nativeQuery = true)
     List<Long> findRandomParkingSpaceIds();
+
+    List<ParkingSpace> findAllByOrderByUbicationAsc();
+
 }

@@ -34,7 +34,7 @@ public class ParkingSpaceService {
 
      //OBTENER TODOS LOS ESPACIOS
     public ArrayList<ParkingSpace> getAllParkingSpaces() {
-        return (ArrayList <ParkingSpace>) parkingSpaceRepository.findAll();
+        return (ArrayList <ParkingSpace>) parkingSpaceRepository.findAllByOrderByUbicationAsc();
     }
 
     //GUARDAR UN ESPACIO NUEVO

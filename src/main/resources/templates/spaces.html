@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+
+<head>
+    <title>Parking Spaces</title>
+    <style>
+        .parking-space {
+            width: 50px;
+            height: 25px;
+            margin: 5px;
+            border: 1px solid black;
+            display: inline-block;
+        }
+
+        .available {
+            background-color: green;
+        }
+
+        .not-available {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<script>
+    function refreshParkingSpaces() {
+        fetch('/api/parking_spaces') // Asume que tienes un endpoint en /api/parking_spaces que devuelve los datos en formato JSON
+        .then(response => response.json())
+        .then(data => {
+            // Aquí actualizas el DOM con los nuevos datos
+            // Por ejemplo, puedes cambiar el color de los rectángulos según el valor de 'available'
+        });
+    }
+
+    setInterval(refreshParkingSpaces, 5000); // Consulta cada 5 segundos
+</script>
+
+<body>
+    <div class="parking-container">
+        <th:block th:each="space : ${parkingSpaces}">
+            <div th:class="|parking-space ${space.available ? 'available' : 'not-available'}|"></div>
+            <span th:text="${space.ubication}"></span>
+        </th:block>
+    </div>
+</body>
+</html>

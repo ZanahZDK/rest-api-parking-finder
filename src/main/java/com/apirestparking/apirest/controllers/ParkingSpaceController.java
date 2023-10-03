@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.apirestparking.apirest.models.ParkingSpace;
 import com.apirestparking.apirest.services.ParkingSpaceService;
 
+
 @RestController
 @RequestMapping("/parking_space")
 public class ParkingSpaceController {
