@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet" th:href="@{/css/styles.css}" />
-
 <head>
     <title>Parking Spaces</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
     <style>
         .parking-space {
             width: 50px;
@@ -11,6 +10,8 @@
             margin: 5px;
             border: 1px solid black;
             display: inline-block;
+            text-align: center;
+            line-height: 25px; /* Centra el texto verticalmente */
         }
 
         .available {
@@ -23,25 +24,37 @@
     </style>
 </head>
 
-<script>
-    function refreshParkingSpaces() {
-        fetch('/api/parking_spaces') // Asume que tienes un endpoint en /api/parking_spaces que devuelve los datos en formato JSON
-        .then(response => response.json())
-        .then(data => {
-            // Aquí actualizas el DOM con los nuevos datos
-            // Por ejemplo, puedes cambiar el color de los rectángulos según el valor de 'available'
-        });
-    }
-
-    setInterval(refreshParkingSpaces, 5000); // Consulta cada 5 segundos
-</script>
-
 <body>
-    <div class="parking-container">
-        <th:block th:each="space : ${parkingSpaces}">
-            <div th:class="|parking-space ${space.available ? 'available' : 'not-available'}|"></div>
-            <span th:text="${space.ubication}"></span>
-        </th:block>
-    </div>
+    <button onclick="loadParkingSpaces('Nivel 1')">Nivel 1</button>
+    <button onclick="loadParkingSpaces('Nivel 2')">Nivel 2</button>
+    <button onclick="loadParkingSpaces('Nivel 3')">Nivel 3</button>
+
+    <div id="parkingContainer" class="parking-container"></div>
+
+    <script>
+        function loadParkingSpaces(floor) {
+            fetch('/parking_space/byFloor/' + floor)
+            .then(response => response.json())
+            .then(data => {
+                data.sort((a, b) => a.ubication.localeCompare(b.ubication)); // Ordena los espacios por su ubicación
+                
+                const container = document.getElementById('parkingContainer');
+                container.innerHTML = ''; // Limpia los espacios previos
+
+                data.forEach(space => {
+                    const spaceElement = document.createElement('div');
+                    spaceElement.className = 'parking-space ' + (space.available ? 'available' : 'not-available');
+                    spaceElement.innerText = space.ubication;
+                    container.appendChild(spaceElement);
+                });
+            });
+        }
+
+        // Cargar los espacios de estacionamiento del 'nivel 1' al cargar la página.
+        window.onload = function() {
+            loadParkingSpaces('Nivel 2');
+        }
+    </script>
+
 </body>
 </html>

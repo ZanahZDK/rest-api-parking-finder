@@ -56,4 +56,9 @@ public class ParkingSpaceService {
             return false;
         }
     }
+
+    //OBTENER ESPACIOS POR PISO
+    public List<ParkingSpace> getParkingSpacesByFloor(String floor) {
+        return parkingSpaceRepository.findByFloor(floor);
+    }
 }

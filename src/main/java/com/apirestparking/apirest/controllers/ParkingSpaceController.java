@@ -45,5 +45,4 @@ public class ParkingSpaceController {
             return "No se pudo eliminar el espacio con id " + id;
         }
     }
-    
 }
