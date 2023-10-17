@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .  # Asume que tu Dockerfile está en el directorio actual
+    image: mi-api:latest  # Nombre de la imagen resultante
+    ports:
+      - "8080:8080"  # Expone el puerto 8080
+
+  db:
+    image: postgres:13  # Ejemplo de una base de datos PostgreSQL
+    environment:
+      POSTGRES_DB: midb
+      POSTGRES_USER: miusuario
+      POSTGRES_PASSWORD: mipassword
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:  # Define un volumen para persistir los datos de la base de datos

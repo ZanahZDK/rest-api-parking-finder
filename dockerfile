@@ -1,15 +1,17 @@
-# Etapa 1: Construye la aplicación con Maven
-FROM maven:3.9.5-openjdk-17 AS build
-WORKDIR /app
-COPY pom.xml .
-RUN mvn dependency:go-offline
-COPY src src
-RUN mvn package -DskipTests
+# Usa una imagen base de Maven con JDK incluido
+FROM maven:3.8.3-openjdk-17
 
-# Etapa 2: Ejecuta la aplicación Java con el archivo JAR generado
-FROM openjdk:17-jdk-slim
+# Establece el directorio de trabajo en el contenedor
 WORKDIR /app
-COPY --from=build target/api-rest-0.0.1-SNAPSHOT.jar api-rest-0.0.1-SNAPSHOT.jar
+
+# Copia el proyecto al contenedor
+COPY . .
+
+# Ejecuta Maven para construir el proyecto
+RUN mvn clean install -DskipTests  # Omite las pruebas para acelerar la construcción
+
+# Especifica el puerto que la aplicación escuchará
 EXPOSE 8080
-CMD ["java", "-jar", "api-rest-0.0.1-SNAPSHOT.jar"]
 
+# Ejecuta la aplicación
+CMD ["java", "-jar", "target/api-rest-0.0.1-SNAPSHOT.jar"]
