@@ -1,0 +1,10 @@
+com\apirestparking\apirest\controllers\ParkingLotController.class
+com\apirestparking\apirest\services\ParkingSpaceService.class
+com\apirestparking\apirest\controllers\ParkingSpaceController.class
+com\apirestparking\apirest\repositories\ParkingSpaceRepository.class
+com\apirestparking\apirest\controllers\ParkingSpaceViewController.class
+com\apirestparking\apirest\models\ParkingLot.class
+com\apirestparking\apirest\ApiRestApplication.class
+com\apirestparking\apirest\models\ParkingSpace.class
+com\apirestparking\apirest\repositories\ParkingLotRepository.class
+com\apirestparking\apirest\services\ParkingLotService.class
