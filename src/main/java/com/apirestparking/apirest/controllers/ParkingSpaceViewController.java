@@ -31,5 +31,14 @@ public class ParkingSpaceViewController {
         public List<ParkingSpace> getParkingSpacesByFloor(@PathVariable("floor") String floor) {
             return parkingSpaceService.getParkingSpacesByFloor(floor);
         }
+
+        @ResponseBody
+        @GetMapping("/byFloorAndParkingLot/{floor}/{parkingLotId}")
+        public List<ParkingSpace> getParkingSpacesByFloorAndParkingLot(
+            @PathVariable("floor") String floor, 
+            @PathVariable("parkingLotId") Long parkingLotId) {
+            
+            return parkingSpaceService.getParkingSpacesByFloorAndParkingLot(floor, parkingLotId);
+}
     
 }

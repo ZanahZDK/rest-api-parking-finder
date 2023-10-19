@@ -3,6 +3,7 @@ package com.apirestparking.apirest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.apirestparking.apirest.models.ParkingLot;
@@ -21,13 +22,15 @@ public class DatabaseInitializer {
     @Autowired
     private ParkingLotRepository parkingLotRepository;
 
+    @Value("${database.initialize}")
+    private boolean initializeDatabase;
+
     @PostConstruct
     public void initAndSeedDatabase() {
-        // Primero, inicializar los ParkingLots
-        initDatabase();
-        
-        // Luego, sembrar los ParkingSpaces
-        seedDatabase();
+        if (initializeDatabase) {
+            initDatabase();
+            seedDatabase();
+        }
     }
 
     public void initDatabase() {
