@@ -1,5 +1,7 @@
 package com.apirestparking.apirest.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -18,6 +20,7 @@ public class ParkingSpace {
      // Relación muchos a uno con ParkingLot
      @ManyToOne(fetch = FetchType.LAZY)
      @JoinColumn(name="parking_lot_id")
+     @JsonIgnore
      private ParkingLot parkingLot;
 
     public void setFloor(String floor) {
@@ -50,5 +53,13 @@ public class ParkingSpace {
 
     public Long getId(){
         return id;
+    }
+
+    public ParkingLot getParkingLot() {
+        return parkingLot;
+    }
+
+    public void setParkingLot(ParkingLot parkingLot) {
+        this.parkingLot = parkingLot;
     }
 }

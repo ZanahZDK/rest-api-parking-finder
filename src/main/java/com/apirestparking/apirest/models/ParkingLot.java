@@ -54,5 +54,4 @@ public class ParkingLot {
     public Long getId(){
         return id;
     }
-    
 }
