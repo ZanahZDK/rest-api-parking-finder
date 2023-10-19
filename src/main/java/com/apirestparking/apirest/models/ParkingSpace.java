@@ -20,6 +20,14 @@ public class ParkingSpace {
      @JoinColumn(name="parking_lot_id")
      private ParkingLot parkingLot;
 
+    public ParkingLot getParkingLot() {
+        return parkingLot;
+    }
+
+    public void setParkingLot(ParkingLot parkingLot) {
+        this.parkingLot = parkingLot;
+    }
+
     public void setFloor(String floor) {
         this.floor = floor;
     }

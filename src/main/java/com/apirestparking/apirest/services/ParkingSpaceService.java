@@ -25,14 +25,14 @@ public class ParkingSpaceService {
         List<Long> randomIds = parkingSpaceRepository.findRandomParkingSpaceIds();
         List<ParkingSpace> parkingSpaces = (List<ParkingSpace>) parkingSpaceRepository.findAllById(randomIds);
     
-    // Invertir el valor de 'available' para cada espacio
+    //INVERTIR EL VALOR DE 'AVAILABLE' PARA CADA ESPACIO
         for (ParkingSpace space : parkingSpaces) {
             space.setAvailable(!space.getAvailable());
         }
         parkingSpaceRepository.saveAll(parkingSpaces);
     }
 
-     //OBTENER TODOS LOS ESPACIOS
+    //OBTENER TODOS LOS ESPACIOS
     public ArrayList<ParkingSpace> getAllParkingSpaces() {
         return (ArrayList <ParkingSpace>) parkingSpaceRepository.findAllByOrderByUbicationAsc();
     }
@@ -60,5 +60,10 @@ public class ParkingSpaceService {
     //OBTENER ESPACIOS POR PISO
     public List<ParkingSpace> getParkingSpacesByFloor(String floor) {
         return parkingSpaceRepository.findByFloor(floor);
+    }
+
+    //OBTENER ESTACIONAMIENTO POR NOMBRE Y DIRECCION
+    public List<ParkingSpace> getParkingSpacesByFloorAndParkingLot(String floor, Long parkingLotId) {
+        return parkingSpaceRepository.findByFloorAndParkingLotId(floor, parkingLotId);
     }
 }

@@ -1,6 +1,7 @@
 package com.apirestparking.apirest.services;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import com.apirestparking.apirest.models.ParkingLot;
@@ -39,4 +40,15 @@ public class ParkingLotService {
             return false;
         }
     }
+
+    //OBTENER ESTACIONAMIENTO POR NOMBRE
+    public List<ParkingLot> getParkingLotByName(String name) {
+        return parkingLotRepository.findByName(name);
+    }
+
+    //OBTENER ESTACIONAMIENTO POR DIRECCION
+    public List<ParkingLot> getParkingLotByDirection(String direction) {
+        return parkingLotRepository.findByDirection(direction);
+    }
+
 }
