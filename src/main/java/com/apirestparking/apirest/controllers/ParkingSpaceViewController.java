@@ -39,6 +39,6 @@ public class ParkingSpaceViewController {
             @PathVariable("parkingLotId") Long parkingLotId) {
             
             return parkingSpaceService.getParkingSpacesByFloorAndParkingLot(floor, parkingLotId);
-}
-    
+        }              
+             
 }

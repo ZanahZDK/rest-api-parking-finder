@@ -17,17 +17,17 @@ public class ParkingLot {
 
     private String name;
     private String direction;
-    private String price;
+    private int price;
 
     // Relación uno a muchos con ParkingSpace
     @OneToMany(mappedBy = "parkingLot", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ParkingSpace> parkingSpaces = new ArrayList<>();
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
-    public String getPrice(){
+    public int getPrice(){
         return price;
     }
 
