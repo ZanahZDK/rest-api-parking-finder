@@ -1,5 +1,6 @@
 com\apirestparking\apirest\controllers\ParkingLotController.class
 com\apirestparking\apirest\services\ParkingSpaceService.class
+com\apirestparking\apirest\DatabaseInitializer.class
 com\apirestparking\apirest\controllers\ParkingSpaceController.class
 com\apirestparking\apirest\repositories\ParkingSpaceRepository.class
 com\apirestparking\apirest\controllers\ParkingSpaceViewController.class
