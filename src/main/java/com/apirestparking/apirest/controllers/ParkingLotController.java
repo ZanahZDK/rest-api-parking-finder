@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,9 +29,20 @@ public class ParkingLotController {
         return parkingLotService.getAllParkingLots();
     }
 
-    @PostMapping()
+    @PutMapping()
     public ParkingLot saveParkingLot(@RequestBody ParkingLot parkingLot) {
         return this.parkingLotService.saveParkingLot(parkingLot);
+    }
+
+    //AGREGAR ESTACIONAMIENTO
+    @PostMapping()
+    public ResponseEntity<ParkingLot> addParkingLot(@RequestBody ParkingLot parkingLot) {
+        ParkingLot newParkingLot = parkingLotService.saveParkingLot(parkingLot);
+        if (newParkingLot != null) {
+            return ResponseEntity.ok(newParkingLot);
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @GetMapping(path = "/{id}")
@@ -38,6 +50,7 @@ public class ParkingLotController {
         return this.parkingLotService.getParkingLotById(id);
     }
 
+    //ELIMINAR ESTACIONAMIENTO
     @DeleteMapping(path = "/{id}")
     public String deleteParkingLot(@PathVariable("id") Long id) {
         boolean ok = this.parkingLotService.deleteParkingLot(id);
@@ -47,15 +60,39 @@ public class ParkingLotController {
             return "No se pudo eliminar el estacionamiento con id " + id;
         }
     }
-        @GetMapping("/{id}/price")
-        public ResponseEntity<Integer> getParkingLotPrice(@PathVariable Long id) {
-            Optional<ParkingLot> parkingLot = parkingLotService.getParkingLotById(id);
-            if (parkingLot.isPresent()) {
-                return new ResponseEntity<>(parkingLot.get().getPrice(), HttpStatus.OK);
-            } 
-            else {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
+
+    @GetMapping("/{id}/hourPrice")
+    public ResponseEntity<Integer> getParkingLotPrice(@PathVariable Long id) {
+        Optional<ParkingLot> parkingLot = parkingLotService.getParkingLotById(id);
+        if (parkingLot.isPresent()) {
+            return new ResponseEntity<>(parkingLot.get().getHourPrice(), HttpStatus.OK);
+        } 
+        else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping("/{id}/minutePrice")
+    public ResponseEntity<Integer> getParkingLotPriceMin(@PathVariable Long id) {
+        Optional<ParkingLot> parkingLot = parkingLotService.getParkingLotById(id);
+        if (parkingLot.isPresent()) {
+            return new ResponseEntity<>(parkingLot.get().getMinutePrice(), HttpStatus.OK);
+        } 
+        else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    //EDITAR ESTACIONAMIENTO
+    @PostMapping(path = "/{id}")
+    public ResponseEntity<ParkingLot> updateParkingLot(@PathVariable("id") Long id, @RequestBody ParkingLot parkingLot) {
+        return parkingLotService.getParkingLotById(id)
+                .map(existingParkingLot -> {
+                    parkingLot.setId(id);
+                    ParkingLot updatedParkingLot = parkingLotService.saveParkingLot(parkingLot);
+                    return new ResponseEntity<>(updatedParkingLot, HttpStatus.OK);
+                })
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
     
 }
