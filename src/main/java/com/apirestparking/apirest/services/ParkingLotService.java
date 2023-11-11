@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import com.apirestparking.apirest.models.ParkingLot;
+import com.apirestparking.apirest.models.ParkingSpace;
 import com.apirestparking.apirest.repositories.ParkingLotRepository;
+import com.apirestparking.apirest.repositories.ParkingSpaceRepository;
 
+import jakarta.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,9 +18,12 @@ public class ParkingLotService {
     @Autowired
     ParkingLotRepository parkingLotRepository;
 
+    @Autowired
+    private ParkingSpaceRepository parkingSpaceRepository;
+
     //OBTENER TODOS LOS ESTACIONAMIENTOS
     public ArrayList<ParkingLot> getAllParkingLots() {
-        return (ArrayList <ParkingLot>) parkingLotRepository.findAll();
+        return (ArrayList <ParkingLot>) parkingLotRepository.findAllByOrderByIdAsc();
     }
 
     //GUARDAR UN ESTACIONAMIENTO NUEVO
@@ -38,5 +44,24 @@ public class ParkingLotService {
         } catch (Exception err) {
             return false;
         }
+    }
+
+    public void addParkingSpace(ParkingSpace space) {
+        parkingSpaceRepository.save(space);
+        updateTotalSpaces(space.getParkingLot().getId());
+    }
+
+    public void removeParkingSpace(Long spaceId) {
+        ParkingSpace space = parkingSpaceRepository.findById(spaceId)
+            .orElseThrow(() -> new EntityNotFoundException("ParkingSpace no encontrado"));
+        parkingSpaceRepository.delete(space);
+        updateTotalSpaces(space.getParkingLot().getId());
+    }
+
+    private void updateTotalSpaces(Long parkingLotId) {
+        ParkingLot lot = parkingLotRepository.findById(parkingLotId).get();
+        int totalSpaces = parkingSpaceRepository.countByParkingLotId(parkingLotId);
+        lot.setTotalSpaces(totalSpaces);
+        parkingLotRepository.save(lot);
     }
 }

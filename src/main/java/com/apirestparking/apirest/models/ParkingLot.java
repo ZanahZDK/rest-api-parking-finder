@@ -17,18 +17,37 @@ public class ParkingLot {
 
     private String name;
     private String direction;
-    private int price;
+    private int hourPrice;
+    private int minutePrice;
+    private int totalSpaces;
+    private double latitud; 
+    private double longitud;
 
     // Relación uno a muchos con ParkingSpace
     @OneToMany(mappedBy = "parkingLot", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ParkingSpace> parkingSpaces = new ArrayList<>();
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setHourPrice(int hourPrice) {
+        this.hourPrice = hourPrice;
     }
 
-    public int getPrice(){
-        return price;
+    public int getHourPrice(){
+        return hourPrice;
+    }
+
+    public void setMinutePrice(int minutePrice) {
+        this.minutePrice = minutePrice;
+    }
+
+    public int getMinutePrice(){
+        return minutePrice;
+    }
+    public void setTotalSpaces(int totalSpaces) {
+        this.totalSpaces = totalSpaces;
+    }
+
+    public int getTotalSpaces(){
+        return totalSpaces;
     }
 
     public void setDirection(String direction) {
@@ -45,6 +64,22 @@ public class ParkingLot {
 
     public String getName(){
         return name;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public double getLatitud(){
+        return latitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
+    }
+
+    public double getLongitud(){
+        return longitud;
     }
 
     public void setId (Long id) {

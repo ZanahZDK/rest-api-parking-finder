@@ -9,7 +9,7 @@ import com.apirestparking.apirest.models.ParkingSpace;
 @Repository
 public interface ParkingSpaceRepository extends CrudRepository<ParkingSpace, Long>{
 
-    @Query(value = "SELECT id FROM parking_space ORDER BY RANDOM() LIMIT 5", nativeQuery = true)
+    @Query(value = "SELECT id FROM parking_space ORDER BY RANDOM() LIMIT 50", nativeQuery = true)
     List<Long> findRandomParkingSpaceIds();
 
     List<ParkingSpace> findAllByOrderByUbicationAsc();
@@ -17,5 +17,7 @@ public interface ParkingSpaceRepository extends CrudRepository<ParkingSpace, Lon
     List<ParkingSpace> findByFloor(String floor);
 
     List<ParkingSpace> findByFloorAndParkingLotId(String floor, Long parkingLotId);
+
+    int countByParkingLotId(Long parkingLotId);
 
 }

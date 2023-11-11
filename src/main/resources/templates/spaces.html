@@ -1,60 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <title>Parking Spaces</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}" />
-    <style>
-        .parking-space {
-            width: 50px;
-            height: 25px;
-            margin: 5px;
-            border: 1px solid black;
-            display: inline-block;
-            text-align: center;
-            line-height: 25px; /* Centra el texto verticalmente */
-        }
-
-        .available {
-            background-color: green;
-        }
-
-        .not-available {
-            background-color: red;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador de Parking Lot</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <button onclick="loadParkingSpaces('Nivel 1')">Nivel 1</button>
-    <button onclick="loadParkingSpaces('Nivel 2')">Nivel 2</button>
-    <button onclick="loadParkingSpaces('Nivel 3')">Nivel 3</button>
+    <h1>Administración de Parking Lots</h1>
+    <div id="parking-lots"></div>
 
-    <div id="parkingContainer" class="parking-container"></div>
+    <h2>Añadir Parking Lot</h2>
+    <form id="add-parking-lot-form">
+        <input type="text" id="name" placeholder="Nombre" required>
+        <input type="text" id="direction" placeholder="Dirección" required>
+        <input type="number" id="price" placeholder="Precio" required>
+        <button type="submit">Añadir</button>
+    </form>
 
-    <script>
-        function loadParkingSpaces(floor) {
-            fetch('/parking_space/byFloor/' + floor)
-            .then(response => response.json())
-            .then(data => {
-                data.sort((a, b) => a.ubication.localeCompare(b.ubication)); // Ordena los espacios por su ubicación
-                
-                const container = document.getElementById('parkingContainer');
-                container.innerHTML = ''; // Limpia los espacios previos
-
-                data.forEach(space => {
-                    const spaceElement = document.createElement('div');
-                    spaceElement.className = 'parking-space ' + (space.available ? 'available' : 'not-available');
-                    spaceElement.innerText = space.ubication;
-                    container.appendChild(spaceElement);
-                });
-            });
-        }
-
-        // Cargar los espacios de estacionamiento del 'nivel 1' al cargar la página.
-        window.onload = function() {
-            loadParkingSpaces('Nivel 2');
-        }
-    </script>
-
+    <script src="admin.js"></script>
 </body>
 </html>
