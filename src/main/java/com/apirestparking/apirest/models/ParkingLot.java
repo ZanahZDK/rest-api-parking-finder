@@ -23,8 +23,8 @@ public class ParkingLot {
     private double latitud; 
     private double longitud;
 
-    // Relación uno a muchos con ParkingSpace
-    @OneToMany(mappedBy = "parkingLot", cascade = CascadeType.ALL, orphanRemoval = true)
+    // Relación 1:N con ParkingSpace
+    @OneToMany(mappedBy = "parkingLot", cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH }, orphanRemoval = false)
     private List<ParkingSpace> parkingSpaces = new ArrayList<>();
 
     public void setHourPrice(int hourPrice) {

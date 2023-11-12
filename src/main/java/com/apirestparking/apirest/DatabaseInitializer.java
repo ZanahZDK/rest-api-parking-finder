@@ -37,7 +37,7 @@ public class DatabaseInitializer {
         // Crear y guardar algunos parking_lots
         ParkingLot parkingLot1 = new ParkingLot();
         parkingLot1.setName("Costanera Center");
-        parkingLot1.setDirection("Providencia");
+        parkingLot1.setDirection("Av. Andres Bello 2425");
         parkingLot1.setHourPrice(1500);
         parkingLot1.setMinutePrice(25);
         parkingLot1.setLatitud(-33.41679534637822);
@@ -47,7 +47,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot2 = new ParkingLot();
         parkingLot2.setName("Parque Arauco");
-        parkingLot2.setDirection("Las Condes");
+        parkingLot2.setDirection("Av. Pdte. Kennedy 5413");
         parkingLot2.setHourPrice(1020);
         parkingLot2.setMinutePrice(17);
         parkingLot2.setLatitud(-33.404522426319375);
@@ -57,7 +57,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot3 = new ParkingLot();
         parkingLot3.setName("Florida Center");
-        parkingLot3.setDirection("La Florida");
+        parkingLot3.setDirection("Av. Vicuna Mackenna Ote. 6100");
         parkingLot3.setHourPrice(900);
         parkingLot3.setMinutePrice(15);
         parkingLot3.setLatitud(-33.51052431719239);
@@ -66,7 +66,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot4 = new ParkingLot();
         parkingLot4.setName("MallPlaza Vespucio");
-        parkingLot4.setDirection("Vespucio");
+        parkingLot4.setDirection("Av. Vicuna Mackenna Ote. 7110");
         parkingLot4.setHourPrice(960);
         parkingLot4.setMinutePrice(16);
         parkingLot4.setLatitud(-33.51909630360077);
@@ -75,7 +75,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot5 = new ParkingLot();
         parkingLot5.setName("MallPlaza Alameda");
-        parkingLot5.setDirection("Alameda");
+        parkingLot5.setDirection("Av Alameda Libertador Bernardo O'Higgins 3470");
         parkingLot5.setHourPrice(1800);
         parkingLot5.setMinutePrice(30);
         parkingLot5.setLatitud(-33.45331918521875);
@@ -84,7 +84,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot6 = new ParkingLot();
         parkingLot6.setName("MallPlaza Egaña");
-        parkingLot6.setDirection("La Reina");
+        parkingLot6.setDirection("Av. Larrain 5862");
         parkingLot6.setHourPrice(900);
         parkingLot6.setMinutePrice(15);
         parkingLot6.setLatitud(-33.453510856050265);
@@ -93,7 +93,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot7 = new ParkingLot();
         parkingLot7.setName("MallPlaza Sur");
-        parkingLot7.setDirection("San Bernando");
+        parkingLot7.setDirection("Av. Pdte. Jorge Alessandri Rodriguez 20040");
         parkingLot7.setHourPrice(0);
         parkingLot7.setMinutePrice(0);
         parkingLot7.setLatitud(-33.631822727459166);
@@ -102,7 +102,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot8 = new ParkingLot();
         parkingLot8.setName("Paseo Quilin");
-        parkingLot8.setDirection("Peñalolen");
+        parkingLot8.setDirection("Avenida Americo Vespucio 3300");
         parkingLot8.setHourPrice(0);
         parkingLot8.setMinutePrice(0);
         parkingLot8.setLatitud(-33.48802493556529);
@@ -111,7 +111,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot9 = new ParkingLot();
         parkingLot9.setName("MallPlaza Los Dominicos");
-        parkingLot9.setDirection("Las Condes");
+        parkingLot9.setDirection("Av. Padre Hurtado Sur 875");
         parkingLot9.setHourPrice(900);
         parkingLot9.setMinutePrice(15);
         parkingLot9.setLatitud(-33.41498513654357);
@@ -120,7 +120,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot10 = new ParkingLot();
         parkingLot10.setName("Open Kennedy");
-        parkingLot10.setDirection("Las Condes");
+        parkingLot10.setDirection("Avenida Presidente Kennedy 5601");
         parkingLot10.setHourPrice(1200);
         parkingLot10.setMinutePrice(20);
         parkingLot10.setLatitud(-33.401107338700385);
@@ -129,7 +129,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot11 = new ParkingLot();
         parkingLot11.setName("Alto Las Condes");
-        parkingLot11.setDirection("Las Condes");
+        parkingLot11.setDirection("Av. Pdte. Kennedy Lateral 9001");
         parkingLot11.setHourPrice(900);
         parkingLot11.setMinutePrice(15);
         parkingLot11.setLatitud(-33.389659851232466);
@@ -138,7 +138,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot12 = new ParkingLot();
         parkingLot12.setName("Portal La Dehesa");
-        parkingLot12.setDirection("La Dehesa");
+        parkingLot12.setDirection("Av. La Dehesa 1445");
         parkingLot12.setHourPrice(900);
         parkingLot12.setMinutePrice(15);
         parkingLot12.setLatitud(-33.35747756939537);
@@ -147,7 +147,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot13 = new ParkingLot();
         parkingLot13.setName("Portal La Reina");
-        parkingLot13.setDirection("La Reina");
+        parkingLot13.setDirection("Av Francisco Bilbao 8750");
         parkingLot13.setHourPrice(0);
         parkingLot13.setMinutePrice(0);
         parkingLot13.setLatitud(-33.42785883779931);
@@ -156,7 +156,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot14 = new ParkingLot();
         parkingLot14.setName("Apumanque");
-        parkingLot14.setDirection("Las Condes");
+        parkingLot14.setDirection("Av. Manquehue Sur 31");
         parkingLot14.setHourPrice(2100);
         parkingLot14.setMinutePrice(35);
         parkingLot14.setLatitud(-33.40981446818548);
@@ -165,7 +165,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot15 = new ParkingLot();
         parkingLot15.setName("Barrio Independencia");
-        parkingLot15.setDirection("Independencia");
+        parkingLot15.setDirection("Av. Independencia 565");
         parkingLot15.setHourPrice(840);
         parkingLot15.setMinutePrice(14);
         parkingLot15.setLatitud(-33.42461133190757);
@@ -174,7 +174,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot16 = new ParkingLot();
         parkingLot16.setName("Paseo San Bernardo");
-        parkingLot16.setDirection("San Bernardo");
+        parkingLot16.setDirection("Eyzaguirre 650");
         parkingLot16.setHourPrice(480);
         parkingLot16.setMinutePrice(8);
         parkingLot16.setLatitud(-33.5951796396068);
@@ -183,7 +183,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot17 = new ParkingLot();
         parkingLot17.setName("MallPlaza Tobalaba");
-        parkingLot17.setDirection("Providencia");
+        parkingLot17.setDirection("Av. Camilo Henríquez 3692");
         parkingLot17.setHourPrice(0);
         parkingLot17.setMinutePrice(0);
         parkingLot17.setLatitud(-33.568605042767366);
@@ -192,7 +192,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot18= new ParkingLot();
         parkingLot18.setName("Open Puente Alto");
-        parkingLot18.setDirection("Puente Alto");
+        parkingLot18.setDirection("Paradero 37, Av. Concha y Toro 1611-1989");
         parkingLot18.setHourPrice(1200);
         parkingLot18.setMinutePrice(20);
         parkingLot18.setLatitud(-33.596911883208854);
@@ -201,7 +201,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot19 = new ParkingLot();
         parkingLot19.setName("Espacio Urbano Puente Alto");
-        parkingLot19.setDirection("Puente Alto");
+        parkingLot19.setDirection("Av. Concha y Toro 1149");
         parkingLot19.setHourPrice(0);
         parkingLot19.setMinutePrice(0);
         parkingLot19.setLatitud(-33.599297921136966);
@@ -210,7 +210,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot20 = new ParkingLot();
         parkingLot20.setName("Arauco El Bosque");
-        parkingLot20.setDirection("El Bosque");
+        parkingLot20.setDirection("Gran Av. Jose Miguel Carrera 10375");
         parkingLot20.setHourPrice(900);
         parkingLot20.setMinutePrice(15);
         parkingLot20.setLatitud(-33.55354641417957);
@@ -219,7 +219,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot21 = new ParkingLot();
         parkingLot21.setName("MallPlaza Oeste");
-        parkingLot21.setDirection("Cerrillos");
+        parkingLot21.setDirection("Av. Americo Vespucio 1501");
         parkingLot21.setHourPrice(960);
         parkingLot21.setMinutePrice(16);
         parkingLot21.setLatitud(-33.516673054956996);
@@ -228,7 +228,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot22 = new ParkingLot();
         parkingLot22.setName("Mall Arauco Maipú");
-        parkingLot22.setDirection("Maipu");
+        parkingLot22.setDirection("Av. Americo Vespucio 399");
         parkingLot22.setHourPrice(0);
         parkingLot22.setMinutePrice(0);
         parkingLot22.setLatitud(-33.481338105655624);
@@ -237,7 +237,7 @@ public class DatabaseInitializer {
 
         ParkingLot parkingLot23 = new ParkingLot();
         parkingLot23.setName("Mall Arauco Quilicura");
-        parkingLot23.setDirection("Quilicura");
+        parkingLot23.setDirection("Av. Bernardo O'Higgins 581");
         parkingLot23.setHourPrice(0);
         parkingLot23.setMinutePrice(0);
         parkingLot23.setLatitud(-33.36836056664303);
