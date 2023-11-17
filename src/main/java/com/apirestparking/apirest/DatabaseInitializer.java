@@ -246,7 +246,7 @@ public class DatabaseInitializer {
     }
 
     public void seedDatabase() {
-        int spacesPerParkingLot = 75; // Define aquí la cantidad de espacios por estacionamiento
+        int spacesPerParkingLot = 75;
         List<ParkingLot> parkingLots = (List<ParkingLot>) parkingLotRepository.findAll();
 
         for (ParkingLot parkingLot : parkingLots) {
