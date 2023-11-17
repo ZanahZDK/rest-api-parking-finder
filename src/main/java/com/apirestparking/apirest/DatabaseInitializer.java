@@ -34,7 +34,7 @@ public class DatabaseInitializer {
     }
 
     public void initDatabase() {
-        // Crear y guardar algunos parking_lots
+        
         ParkingLot parkingLot1 = new ParkingLot();
         parkingLot1.setName("Costanera Center");
         parkingLot1.setDirection("Av. Andres Bello 2425");

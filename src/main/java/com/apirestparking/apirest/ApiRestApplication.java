@@ -21,7 +21,11 @@ public class ApiRestApplication {
         	@Override
         	public void addCorsMappings(CorsRegistry registry) {
             	registry.addMapping("/**")
-    				.allowedOrigins("http://localhost:8000")
+    				.allowedOrigins(
+						"http://localhost:8000",
+						"https://admin-view-parking-finder.netlify.app"
+					)
+					
 					.allowedMethods("GET", "POST", "PUT", "DELETE")
 					.allowedHeaders("Content-Type", "Authorization", "X-Requested-With", "Accept", "Origin")
 					.allowCredentials(true);
