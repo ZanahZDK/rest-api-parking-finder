@@ -37,16 +37,6 @@ public class ParkingLotService {
         return parkingLotRepository.findById(id);
     }
 
-    //ELIMINAR ESTACIONAMIENTO POR ID
-    public boolean deleteParkingLot(Long id) {
-        try {
-            parkingLotRepository.deleteById(id);
-            return true;
-        } catch (Exception err) {
-            return false;
-        }
-    }
-
     public void addParkingSpace(ParkingSpace space) {
         parkingSpaceRepository.save(space);
         updateTotalSpaces(space.getParkingLot().getId());
@@ -69,12 +59,13 @@ public class ParkingLotService {
     public boolean deleteParkingLotById(Long id) {
         try {
             List<ParkingSpace> spaces = parkingSpaceRepository.findByParkingLotIdOrderByIdAsc(id);
-            parkingSpaceRepository.deleteAll(spaces);
-    
+            if (!spaces.isEmpty()) {
+                parkingSpaceRepository.deleteAll(spaces);
+            }
             parkingLotRepository.deleteById(id);
             return true;
         } catch (Exception err) {
-            err.printStackTrace();
+            err.printStackTrace(); // O usar un logger
             return false;
         }
     }

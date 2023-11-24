@@ -53,7 +53,7 @@ public class ParkingLotController {
     // ELIMINAR ESTACIONAMIENTO
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<?> deleteParkingLot(@PathVariable("id") Long id) {
-        boolean isDeleted = parkingLotService.deleteParkingLot(id);
+        boolean isDeleted = parkingLotService.deleteParkingLotById(id);
         if (isDeleted) {
             return ResponseEntity.ok("Estacionamiento con id " + id + " eliminado con éxito");
         } else {
