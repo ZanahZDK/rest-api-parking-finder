@@ -50,14 +50,15 @@ public class ParkingLotController {
         return this.parkingLotService.getParkingLotById(id);
     }
 
-    //ELIMINAR ESTACIONAMIENTO
+    // ELIMINAR ESTACIONAMIENTO
     @DeleteMapping(path = "/{id}")
-    public String deleteParkingLot(@PathVariable("id") Long id) {
-        boolean ok = this.parkingLotService.deleteParkingLot(id);
-        if (ok) {
-            return "Se eliminó el estacionamiento con id " + id;
+    public ResponseEntity<?> deleteParkingLot(@PathVariable("id") Long id) {
+        boolean isDeleted = parkingLotService.deleteParkingLot(id);
+        if (isDeleted) {
+            return ResponseEntity.ok("Estacionamiento con id " + id + " eliminado con éxito");
         } else {
-            return "No se pudo eliminar el estacionamiento con id " + id;
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("No se pudo eliminar el estacionamiento con id " + id);
         }
     }
 
