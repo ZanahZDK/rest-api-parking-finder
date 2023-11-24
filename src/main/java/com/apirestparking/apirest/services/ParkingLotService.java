@@ -68,15 +68,13 @@ public class ParkingLotService {
 
     public boolean deleteParkingLotById(Long id) {
         try {
-            // Eliminar primero todos los ParkingSpaces asociados
             List<ParkingSpace> spaces = parkingSpaceRepository.findByParkingLotIdOrderByIdAsc(id);
             parkingSpaceRepository.deleteAll(spaces);
     
-            // Ahora eliminar el ParkingLot
             parkingLotRepository.deleteById(id);
             return true;
         } catch (Exception err) {
-            err.printStackTrace(); // O usar un logger
+            err.printStackTrace();
             return false;
         }
     }
