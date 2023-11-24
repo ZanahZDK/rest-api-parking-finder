@@ -23,4 +23,7 @@ public interface ParkingSpaceRepository extends CrudRepository<ParkingSpace, Lon
     List<ParkingSpace> findAllByParkingLotIdOrderByUbicationAsc(Long parkingLotId);
 
     List<ParkingSpace> findByParkingLotIdAndFloorOrderByUbicationAsc(Long parkingLotId, String floor);
+
+    List<ParkingSpace> findByParkingLotIdOrderByIdAsc(Long id);
+    
 }

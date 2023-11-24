@@ -1,6 +1,7 @@
 package com.apirestparking.apirest.services;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import com.apirestparking.apirest.models.ParkingLot;
@@ -63,5 +64,20 @@ public class ParkingLotService {
         int totalSpaces = parkingSpaceRepository.countByParkingLotId(parkingLotId);
         lot.setTotalSpaces(totalSpaces);
         parkingLotRepository.save(lot);
+    }
+
+    public boolean deleteParkingLotById(Long id) {
+        try {
+            // Eliminar primero todos los ParkingSpaces asociados
+            List<ParkingSpace> spaces = parkingSpaceRepository.findByParkingLotIdOrderByIdAsc(id);
+            parkingSpaceRepository.deleteAll(spaces);
+    
+            // Ahora eliminar el ParkingLot
+            parkingLotRepository.deleteById(id);
+            return true;
+        } catch (Exception err) {
+            err.printStackTrace(); // O usar un logger
+            return false;
+        }
     }
 }
