@@ -96,12 +96,20 @@ public class ParkingSpaceService {
     public List<ParkingSpace> getParkingSpacesByParkingLotAndFloor(Long parkingLotId, String floor) {
         return parkingSpaceRepository.findByParkingLotIdAndFloorOrderByUbicationAsc(parkingLotId, floor);
     }
-    
+
     public ParkingSpace addParkingSpaceToFloorAndLot(Long parkingLotId, String floor, ParkingSpace parkingSpace) {
         ParkingLot parkingLot = parkingLotRepository.findById(parkingLotId)
                 .orElseThrow(() -> new RuntimeException("ParkingLot not found"));
         parkingSpace.setParkingLot(parkingLot);
         parkingSpace.setFloor(floor);
         return parkingSpaceRepository.save(parkingSpace);
+    }
+
+    public void deleteMultipleParkingSpaces(List<Long> parkingSpaceIds) {
+        for (Long id : parkingSpaceIds) {
+            ParkingSpace parkingSpace = parkingSpaceRepository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("ParkingSpace not found"));
+            parkingSpaceRepository.delete(parkingSpace);
+        }
     }
 }

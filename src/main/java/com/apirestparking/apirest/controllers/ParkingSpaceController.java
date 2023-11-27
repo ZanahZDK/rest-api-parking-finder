@@ -76,5 +76,11 @@ public ResponseEntity<ParkingSpace> addParkingSpaceToFloorAndLot(@PathVariable L
                                                                  @RequestBody ParkingSpace parkingSpace) {
     ParkingSpace newParkingSpace = parkingSpaceService.addParkingSpaceToFloorAndLot(parkingLotId, floor, parkingSpace);
     return new ResponseEntity<>(newParkingSpace, HttpStatus.CREATED);
-}
+    }
+
+    @DeleteMapping("/delete-multiple")
+    public ResponseEntity<?> deleteMultipleParkingSpaces(@RequestBody List<Long> parkingSpaceIds) {
+        parkingSpaceService.deleteMultipleParkingSpaces(parkingSpaceIds);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
