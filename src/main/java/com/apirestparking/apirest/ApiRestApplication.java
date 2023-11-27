@@ -21,10 +21,11 @@ public class ApiRestApplication {
         	@Override
         	public void addCorsMappings(CorsRegistry registry) {
             	registry.addMapping("/**")
-    				.allowedOrigins("*")
+    				.allowedOrigins("admin-panel-production-b080.up.railway.app")
 					
 					.allowedMethods("GET", "POST", "PUT", "DELETE")
-					.allowedHeaders("Content-Type", "Authorization", "X-Requested-With", "Accept", "Origin");
+					.allowedHeaders("Content-Type", "Authorization", "X-Requested-With", "Accept", "Origin")
+					.allowCredentials(true);
         	}
     	};
 	}
