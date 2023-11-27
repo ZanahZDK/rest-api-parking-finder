@@ -71,7 +71,7 @@ public class ParkingSpaceController {
     }
 
     @PostMapping("/add-to-floor/{parkingLotId}/{floor}")
-public ResponseEntity<ParkingSpace> addParkingSpaceToFloorAndLot(@PathVariable Long parkingLotId, 
+    public ResponseEntity<ParkingSpace> addParkingSpaceToFloorAndLot(@PathVariable Long parkingLotId, 
                                                                  @PathVariable String floor, 
                                                                  @RequestBody ParkingSpace parkingSpace) {
     ParkingSpace newParkingSpace = parkingSpaceService.addParkingSpaceToFloorAndLot(parkingLotId, floor, parkingSpace);
