@@ -40,7 +40,7 @@ public class ParkingSpaceService {
 
      //OBTENER TODOS LOS ESPACIOS
     public ArrayList<ParkingSpace> getAllParkingSpaces() {
-        return (ArrayList <ParkingSpace>) parkingSpaceRepository.findAllByOrderByUbicationAsc();
+        return (ArrayList <ParkingSpace>) parkingSpaceRepository.findAllByOrderByIdAsc();
     }
 
     //GUARDAR UN ESPACIO NUEVO
@@ -61,6 +61,10 @@ public class ParkingSpaceService {
     //OBTENER ESPACIOS POR PISO Y PARKING LOT
     public List<ParkingSpace> getParkingSpacesByFloorAndParkingLot(String floor, Long parkingLotId) {
         return parkingSpaceRepository.findByFloorAndParkingLotId(floor, parkingLotId);
+    }
+
+    public List<ParkingSpace> getParkingSpacesByParkingLot(Long parkingLotId) {
+        return parkingSpaceRepository.findByParkingLotIdOrderByIdAsc(parkingLotId);
     }
 
     public ParkingSpace addParkingSpaceToParkingLot(Long parkingLotId, ParkingSpace parkingSpace) {
@@ -87,10 +91,6 @@ public class ParkingSpaceService {
         parkingSpace.setAvailable(parkingSpaceDetails.getAvailable());
         
         return parkingSpaceRepository.save(parkingSpace);
-    }
-
-    public List<ParkingSpace> getParkingSpacesByParkingLot(Long parkingLotId) {
-        return parkingSpaceRepository.findAllByParkingLotIdOrderByUbicationAsc(parkingLotId);
     }
 
     public List<ParkingSpace> getParkingSpacesByParkingLotAndFloor(Long parkingLotId, String floor) {
