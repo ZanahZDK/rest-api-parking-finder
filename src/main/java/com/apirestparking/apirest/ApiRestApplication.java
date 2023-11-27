@@ -21,8 +21,8 @@ public class ApiRestApplication {
         	@Override
         	public void addCorsMappings(CorsRegistry registry) {
             	registry.addMapping("/**")
-    				.allowedOrigins("admin-panel-production-b080.up.railway.app",
-					"https://replit.com/@diesagredo/admin-panel")
+    				.allowedOrigins("https://admin-panel-production-b080.up.railway.app",
+					"https://admin-panel-murex-ten.vercel.app")
 					
 					.allowedMethods("GET", "POST", "PUT", "DELETE")
 					.allowedHeaders("Content-Type", "Authorization", "X-Requested-With", "Accept", "Origin")
