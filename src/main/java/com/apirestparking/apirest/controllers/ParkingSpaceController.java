@@ -69,4 +69,12 @@ public class ParkingSpaceController {
         List<ParkingSpace> parkingSpaces = parkingSpaceService.getParkingSpacesByParkingLotAndFloor(parkingLotId, floor);
         return new ResponseEntity<>(parkingSpaces, HttpStatus.OK);
     }
+
+    @PostMapping("/add-to-floor/{parkingLotId}/{floor}")
+public ResponseEntity<ParkingSpace> addParkingSpaceToFloorAndLot(@PathVariable Long parkingLotId, 
+                                                                 @PathVariable String floor, 
+                                                                 @RequestBody ParkingSpace parkingSpace) {
+    ParkingSpace newParkingSpace = parkingSpaceService.addParkingSpaceToFloorAndLot(parkingLotId, floor, parkingSpace);
+    return new ResponseEntity<>(newParkingSpace, HttpStatus.CREATED);
+}
 }
