@@ -24,8 +24,7 @@ public class ApiRestApplication {
     				.allowedOrigins("*")
 					
 					.allowedMethods("GET", "POST", "PUT", "DELETE")
-					.allowedHeaders("Content-Type", "Authorization", "X-Requested-With", "Accept", "Origin")
-					.allowCredentials(true);
+					.allowedHeaders("Content-Type", "Authorization", "X-Requested-With", "Accept", "Origin");
         	}
     	};
 	}
