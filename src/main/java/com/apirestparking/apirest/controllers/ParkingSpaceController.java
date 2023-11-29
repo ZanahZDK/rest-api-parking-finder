@@ -83,4 +83,11 @@ public class ParkingSpaceController {
         parkingSpaceService.deleteMultipleParkingSpaces(parkingSpaceIds);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PostMapping("/add-multiple/{parkingLotId}")
+    public ResponseEntity<List<ParkingSpace>> addMultipleParkingSpacesToLot(@PathVariable Long parkingLotId, 
+                                                                        @RequestBody List<ParkingSpace> parkingSpaces) {
+    List<ParkingSpace> addedParkingSpaces = parkingSpaceService.addMultipleParkingSpacesToLot(parkingLotId, parkingSpaces);
+    return new ResponseEntity<>(addedParkingSpaces, HttpStatus.CREATED);
+}
 }
