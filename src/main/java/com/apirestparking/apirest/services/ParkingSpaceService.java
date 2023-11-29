@@ -112,4 +112,15 @@ public class ParkingSpaceService {
             parkingSpaceRepository.delete(parkingSpace);
         }
     }
+
+    public List<ParkingSpace> addMultipleParkingSpacesToLot(Long parkingLotId, List<ParkingSpace> parkingSpaces) {
+        ParkingLot parkingLot = parkingLotRepository.findById(parkingLotId)
+                .orElseThrow(() -> new RuntimeException("ParkingLot not found"));
+    
+        for (ParkingSpace parkingSpace : parkingSpaces) {
+            parkingSpace.setParkingLot(parkingLot);
+        }
+    
+        return (List<ParkingSpace>) parkingSpaceRepository.saveAll(parkingSpaces);
+    }
 }
